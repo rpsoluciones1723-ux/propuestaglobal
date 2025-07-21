@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta: Chatbot Inteligente para Viajes Central Globe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-step {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+        .flowchart-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            top: 100%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 3rem;
+            background-color: #009FFD;
+        }
+        .flowchart-arrow::after {
+            content: '▼';
+            position: absolute;
+            left: 50%;
+            bottom: 1rem;
+            transform: translateX(-50%);
+            color: #009FFD;
+            font-size: 1.5rem;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+        .timeline-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 2.5rem;
+            bottom: -0.5rem;
+            width: 3px;
+            background-color: #009FFD;
+            transform: translateX(-50%);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 20px;
+            top: 1rem;
+            height: 20px;
+            width: 20px;
+            background-color: #004AAD;
+            border-radius: 50%;
+            border: 3px solid #EAF6FF;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="bg-[#EAF6FF] text-gray-800">
+
+    <!-- Banner R&P Soluciones -->
+    <div class="bg-[#004AAD] text-white text-center py-4 md:py-6 text-xl md:text-2xl font-bold shadow-lg mb-8">
+        R&P SOLUCIONES. GRANDES SOLUCIONES, INVERSIONES INTELIGENTES
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-[#004AAD] mb-4">Transforma la Atención al Cliente en Viajes Central Globe</h1>
+            <p class="text-lg md:text-xl text-[#2A2A72] max-w-3xl mx-auto">Desde R&P Soluciones, descubrimos cómo nuestro Chatbot Inteligente optimizara tus ventas y libera a tu equipo, trabajando para ti 24/7. </p>
+        </header>
+
+        <section id="kpis" class="mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-6xl font-bold text-[#009FFD]">24/7</p>
+                    <h3 class="text-xl font-semibold text-[#004AAD] mt-2">Disponibilidad Total</h3>
+                    <p class="mt-2 text-gray-600">Nunca pierdas una oportunidad. El chatbot atiende a tus clientes incluso fuera del horario de oficina.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-6xl font-bold text-[#009FFD]">+35%</p>
+                    <h3 class="text-xl font-semibold text-[#004AAD] mt-2">Conversión de Leads</h3>
+                    <p class="mt-2 text-gray-600">Califica interesados y asígnalos al agente correcto, incrementando las ventas cerradas.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-6xl font-bold text-[#009FFD]">-50%</p>
+                    <h3 class="text-xl font-semibold text-[#004AAD] mt-2">Consultas Repetitivas</h3>
+                    <p class="mt-2 text-gray-600">Tu equipo puede enfocarse en ventas complejas mientras el bot maneja las preguntas frecuentes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2A2A72] text-center mb-10">Un Aliado Inteligente para Viajes Central Globe</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="text-5xl mb-3">💬</div>
+                    <h4 class="text-lg font-bold text-[#004AAD]">Información al Instante</h4>
+                    <p class="text-gray-600 mt-1">Proporciona detalles sobre servicios, paquetes y dudas frecuentes sin demoras.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-5xl mb-3">🎁</div>
+                    <h4 class="text-lg font-bold text-[#004AAD]">Promociones Efectivas</h4>
+                    <p class="text-gray-600 mt-1">Presenta ofertas y paquetes turísticos de forma atractiva para captar el interés del cliente.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-5xl mb-3">🎯</div>
+                    <h4 class="text-lg font-bold text-[#004AAD]">Calificación de Interesados</h4>
+                    <p class="text-gray-600 mt-1">Identifica a los clientes con mayor potencial de compra y recopila su información clave.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-5xl mb-3">👤</div>
+                    <h4 class="text-lg font-bold text-[#004AAD]">Asignación Inteligente</h4>
+                    <p class="text-gray-600 mt-1">Asigna automáticamente cada oportunidad de venta al agente más adecuado del equipo.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="flowchart" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2A2A72] text-center mb-12">El Viaje del Cliente: De la Consulta a la Venta</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="flex flex-col items-center text-center">
+                    <div class="flowchart-step flowchart-arrow">
+                        <div class="bg-[#009FFD] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl mb-4">1</div>
+                        <h4 class="text-xl font-semibold text-[#004AAD]">Consulta Inicial</h4>
+                        <p class="text-gray-600">El cliente interactúa con el chatbot para pedir información o ver promociones.</p>
+                    </div>
+                    <div class="flowchart-step flowchart-arrow">
+                        <div class="bg-[#009FFD] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl mb-4">2</div>
+                        <h4 class="text-xl font-semibold text-[#004AAD]">Expresa Interés</h4>
+                        <p class="text-gray-600">El cliente muestra intención de reservar o comprar un paquete.</p>
+                    </div>
+                    <div class="flowchart-step flowchart-arrow">
+                        <div class="bg-[#009FFD] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl mb-4">3</div>
+                        <h4 class="text-xl font-semibold text-[#004AAD]">Asignación Automática</h4>
+                        <p class="text-gray-600">El sistema asigna la oportunidad al agente correcto de forma rotativa.</p>
+                    </div>
+                    <div class="flowchart-step">
+                        <div class="bg-[#004AAD] text-white rounded-full w-24 h-24 flex items-center justify-center text-4xl mb-4">4</div>
+                        <h4 class="text-xl font-semibold text-[#004AAD]">Gestión y Cierre</h4>
+                        <p class="text-gray-600">El agente humano contacta al cliente con toda la información para cerrar la venta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="charts" class="mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-[#2A2A72] text-center mb-6">Incremento en Tasa de Conversión</h3>
+                    <p class="text-center text-gray-600 mb-4">El chatbot califica y asigna leads de alta calidad, aumentando las ventas cerradas por tus agentes.</p>
+                    <div class="chart-container">
+                        <canvas id="conversionRateChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-[#2A2A72] text-center mb-6">Productividad del Equipo</h3>
+                     <p class="text-center text-gray-600 mb-4">Al automatizar tareas repetitivas, tu equipo dedica más tiempo a lo que realmente importa: vender.</p>
+                    <div class="chart-container">
+                        <canvas id="productivityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="management-options" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2A2A72] text-center mb-12">Herramientas de Gestión para tus Agentes</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-gray-200">
+                    <h3 class="text-2xl font-bold text-[#004AAD] mb-4">Opción A: Gestión Simplificada</h3>
+                    <p class="text-gray-600 mb-4">Una solución rápida y funcional para iniciar, utilizando vistas organizadas de los clientes asignados.</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span>Visibilidad clara de asignaciones.</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span>Seguimiento de estado básico.</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span>Ideal para una rápida implementación.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl shadow-2xl p-8 border-2 border-[#009FFD]">
+                    <span class="inline-block bg-[#009FFD] text-white text-sm font-bold px-3 py-1 rounded-full mb-4">Recomendado</span>
+                    <h3 class="text-2xl font-bold text-[#004AAD] mb-4">Opción B: Aplicación Dedicada</h3>
+                    <p class="text-gray-600 mb-4">Una aplicación web/móvil profesional para maximizar la eficiencia y el control de tu equipo de ventas.</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span>Panel de control personalizado por agente.</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span>Notificaciones y alertas instantáneas.</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span>Mejora drástica en la productividad.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="roadmap" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2A2A72] text-center mb-12">Nuestro Plan de Implementación</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="pl-12">
+                        <h4 class="text-xl font-bold text-[#004AAD] mb-1">Fase 1: Desarrollo</h4>
+                        <p class="text-gray-600">Construcción del chatbot y del sistema de asignación inteligente. Integración de todos los componentes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="pl-12">
+                        <h4 class="text-xl font-bold text-[#004AAD] mb-1">Fase 2: Pruebas</h4>
+                        <p class="text-gray-600">Validación exhaustiva de funcionalidades y simulaciones reales para garantizar un rendimiento óptimo y sin errores.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="pl-12">
+                        <h4 class="text-xl font-bold text-[#004AAD] mb-1">Fase 3: Implementación</h4>
+                        <p class="text-gray-600">Lanzamiento oficial, capacitación completa a tu equipo y soporte continuo para asegurar el éxito del proyecto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chatbot-test" class="bg-[#004AAD] text-white rounded-xl shadow-lg p-8 md:p-12 mb-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">¡Experimenta el Poder del Chatbot Ahora Mismo!</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Te invitamos a interactuar directamente con nuestro Chatbot Inteligente para que puedas ver y sentir cómo transformará la atención al cliente en Viajes Central Globe. **Esta es una maqueta inicial de prueba para que puedas visualizar el potencial.**</p>
+            <a href="https://wa.me/584149452277" target="_blank" class="inline-block bg-[#009FFD] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-white hover:text-[#004AAD] transition-colors duration-300 transform hover:scale-105">
+                ¡Prueba el Chatbot Aquí!
+            </a>
+        </section>
+
+        <section id="economic-proposal" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2A2A72] text-center mb-12">Propuesta Económica</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">Una inversión estratégica para transformar la eficiencia y las ventas de Viajes Central Globe.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div class="bg-[#EAF6FF] rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-[#004AAD] mb-4">Inversión Inicial</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex justify-between items-center">
+                            <span>Desarrollo del Chatbot (Fase 1 & 2)</span>
+                            <span class="font-semibold text-[#009FFD]">$200 USD</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>Gestión de Clientes (Opción A)</span>
+                            <span class="font-semibold text-[#009FFD]">$50 USD</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>Gestión de Clientes (Opción B - Recomendado)</span>
+                            <span class="font-semibold text-[#009FFD]">$150 USD</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-[#EAF6FF] rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-[#004AAD] mb-4">Suscripción Mensual</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex justify-between items-center">
+                            <span>Soporte y Funcionamiento del Chatbot</span>
+                            <span class="font-semibold text-[#009FFD]">$100 USD/mes</span>
+                        </li>
+                        <li class="text-sm text-gray-600 mt-2">
+                            Incluye: Soporte técnico, monitoreo continuo, y actualizaciones menores para asegurar el rendimiento óptimo del sistema.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-[#004AAD] text-center mb-6">Condiciones de Pago</h3>
+            <div class="bg-[#EAF6FF] rounded-lg p-6 shadow-md text-gray-700 max-w-xl mx-auto">
+                <p class="mb-3">
+                    **50% de la inversión inicial** para el inicio de la fase de Desarrollo y Pruebas.
+                </p>
+                <p class="mb-3">
+                    **50% restante de la inversión inicial** al iniciar la fase de Implementación.
+                </p>
+                <p>
+                    El pago de la **mensualidad es por mes adelantado**, a realizarse dentro de los primeros 5 días de cada mes.
+                </p>
+            </div>
+        </section>
+        
+        <footer class="text-center pt-8">
+             <h2 class="text-3xl font-bold text-[#004AAD] mb-4">¿Listo para Empezar?</h2>
+             <p class="text-lg text-[#2A2A72] mb-6">Hablemos de cómo podemos iniciar este viaje para transformar tu agencia.</p>
+             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                 <a href="mailto:rpsoluciones1723@gmail.com" class="inline-block bg-[#009FFD] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-[#004AAD] transition-colors duration-300">
+                     Contactar por Correo
+                 </a>
+                 <a href="https://wa.me/584124441636" target="_blank" class="inline-block bg-green-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-green-600 transition-colors duration-300">
+                     Contactar por WhatsApp
+                 </a>
+             </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxWidth) => {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            } else {
+              return label;
+            }
+        };
+        
+        const commonChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                       color: '#2A2A72'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const conversionRateData = {
+            labels: ['Oportunidades Perdidas', 'Ventas Cerradas'],
+            datasets: [{
+                label: 'Tasa de Conversión',
+                data: [65, 35],
+                backgroundColor: ['#EAF6FF', '#009FFD'],
+                borderColor: ['#cccccc', '#004AAD'],
+                borderWidth: 1,
+                hoverOffset: 4
+            }]
+        };
+        
+        new Chart(document.getElementById('conversionRateChart'), {
+            type: 'doughnut',
+            data: conversionRateData,
+            options: { ...commonChartOptions }
+        });
+
+        const productivityData = {
+            labels: ['Tareas Repetitivas', 'Ventas Estratégicas y Seguimiento a clientes'],
+            datasets: [
+                {
+                    label: 'Antes del Chatbot',
+                    data: [60, 40],
+                    backgroundColor: '#009FFD',
+                    borderColor: '#004AAD',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Después del Chatbot',
+                    data: [20, 80],
+                    backgroundColor: '#004AAD',
+                    borderColor: '#009FFD',
+                    borderWidth: 1
+                }
+            ]
+        };
+        
+        productivityData.labels = productivityData.labels.map(label => wrapLabel(label, 16));
+
+        new Chart(document.getElementById('productivityChart'), {
+            type: 'bar',
+            data: productivityData,
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '% del Tiempo del Agente',
+                            color: '#2A2A72'
+                        },
+                        ticks: {
+                           color: '#2A2A72'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                           color: '#2A2A72'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
